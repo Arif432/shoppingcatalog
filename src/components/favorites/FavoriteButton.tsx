@@ -1,40 +1,33 @@
-import React, { useCallback, useMemo } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import React from 'react';
+import { Pressable, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useFavorites } from '../../context/FavoritesContext';
 import { scale } from '../../utils/helpers';
+import { fadeIn, fadeOut } from '../../utils/animations';
 
 interface FavoriteButtonProps {
   productId: number;
   size?: number;
 }
 
-const FavoriteButton: React.FC<FavoriteButtonProps> = ({
+const FavoriteButton: React.FC<FavoriteButtonProps> = ({ 
   productId,
   size = scale(24)
 }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
   const favorited = isFavorite(productId);
 
-  // Initialize shared values with useMemo to ensure they're created once
-
-  const onToggleComplete = useCallback(() => {
-    toggleFavorite({ id: productId } as any);
-  }, [productId, toggleFavorite]);
-
-  const handlePress = useCallback(() => {
-    'worklet';
-    
+  const handlePress = () => {
+    toggleFavorite({ id: productId } as any); 
+  };
 
   return (
     <Pressable onPress={handlePress} style={styles.button}>
-      <View >
-        <Icon
-          name={favorited ? 'favorite' : 'favorite-border'}
-          size={size}
-          color={favorited ? '#E76F51' : '#ccc'}
-        />
-      </View>
+      <Icon 
+        name={favorited ? 'favorite' : 'favorite-border'} 
+        size={size} 
+        color={favorited ? '#E76F51' : '#ccc'} 
+      />
     </Pressable>
   );
 };

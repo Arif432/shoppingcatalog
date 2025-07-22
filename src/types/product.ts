@@ -1,4 +1,4 @@
-export type ProductCategory = 'electronics' | 'jewelry' | 'men\'s clothing' | 'women\'s clothing';
+export type ProductCategory = 'electronics' | 'men\'s clothing' | 'women\'s clothing';
 
 export interface Product {
   id: number;
