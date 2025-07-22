@@ -47,7 +47,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onPress, style }) =>
             style={styles.button}
             textStyle={styles.buttonText}
           />
-          <FavoriteButton productId={product.id} />
+          <FavoriteButton 
+            productId={product.id} 
+            product={product}
+          />
         </View>
       </View>
     </Card>

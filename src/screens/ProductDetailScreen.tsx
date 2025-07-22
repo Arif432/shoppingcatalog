@@ -47,6 +47,7 @@ const ProductDetailScreen = () => {
         <Text style={styles.title}>{mockProduct.title}</Text>
         <FavoriteButton 
           productId={productId} 
+          product={mockProduct}
           size={scale(30)} 
         />
       </View>

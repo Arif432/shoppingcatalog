@@ -15,6 +15,7 @@ const ProductsScreen = ({ navigation }) => {
   } = useProducts();
 
   const handleProductPress = (productId: number) => {
+    console.log("sss",productId)
     navigation.navigate('ProductDetail', { productId });
   };
 

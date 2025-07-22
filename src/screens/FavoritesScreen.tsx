@@ -4,12 +4,17 @@ import ProductList from '../components/products/ProductList';
 import { useFavorites } from '../context/FavoritesContext';
 import LoadingIndicator from '../components/common/LoadingIndicator';
 import { scale } from '../utils/helpers';
+import SCREEN_NAMES from '../navigation/ScreenNames';
 
 const FavoritesScreen = ({ navigation }) => {
   const { favorites, loading } = useFavorites();
 
   const handleProductPress = (productId: number) => {
-    navigation.navigate('ProductDetail', { productId });
+    console.log("pr", productId);
+    navigation.navigate(SCREEN_NAMES.PRODUCTS_STACK, {
+      screen: SCREEN_NAMES.PRODUCT_DETAIL,
+      params: { productId },
+    });
   };
 
   if (loading) {
@@ -27,10 +32,7 @@ const FavoritesScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ProductList 
-        products={favorites} 
-        onProductPress={handleProductPress} 
-      />
+      <ProductList products={favorites} onProductPress={handleProductPress} />
     </View>
   );
 };
